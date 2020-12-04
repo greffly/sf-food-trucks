@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Map.css';
+import AllListings from '../AllListings/AllListings';
 import { GoogleMap } from '@react-google-maps/api';
 import { GoogleApiWrapper } from 'google-maps-react';
 
@@ -13,14 +14,17 @@ const center = {
   lng: -122.431297,
 };
 
-export class MapContainer extends React.Component {
+export class MapContainer extends Component {
   render() {
     return (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={13}
-      ></GoogleMap>
+      <>
+        <AllListings />
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={13}
+        ></GoogleMap>
+      </>
     );
   }
 }

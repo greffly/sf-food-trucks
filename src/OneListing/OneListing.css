@@ -1,0 +1,10 @@
+.listing {
+  height: 150px;
+  width: 250px;
+  background-color: white;
+  border: 2px solid black;
+  margin-top: 100px;
+  z-index: 99;
+  position: fixed;
+  padding: 5px;
+}

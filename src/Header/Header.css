@@ -1,11 +1,7 @@
 .header {
   width: 100%;
-  height: 90px;
-  background-image: linear-gradient(
-    to bottom,
-    #b4b4b4,
-    rgba(231, 230, 230, 0.4)
-  );
+  height: 100px;
+  background-color: white;
   display: flex;
   position: fixed;
   z-index: 1;
