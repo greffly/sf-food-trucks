@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  height: 90px;
+  background-image: linear-gradient(
+    to bottom,
+    #b4b4b4,
+    rgba(231, 230, 230, 0.4)
+  );
+  display: flex;
+  position: fixed;
+  z-index: 1;
+}
+
+.title {
+  margin: auto;
+  align-self: center;
+}
+
+.sfTitle {
+  display: inline-block;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+}
