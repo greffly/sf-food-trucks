@@ -1,57 +1,41 @@
-import React, { Component } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './AllListings.css';
 import OneListing from '../OneListing/OneListing';
 import FoodTruckContext from '../FoodTruckContext';
 
-export default class AllListings extends Component {
-  foodTruckUrl = 'https://data.sfgov.org/resource/rqzj-sfat.json';
+function AllListings() {
+  const foodTruckUrl = 'https://data.sfgov.org/resource/rqzj-sfat.json';
+  let [foodTrucks, setFoodTrucks] = useState('');
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      foodTrucks: [],
-      error: null,
-    };
-  }
-
-  setFoodTrucks = (foodTrucks) => {
-    this.setState({
-      foodTrucks,
-      error: null,
-    });
-  };
-
-  componentDidMount() {
-    this.getData();
-  }
-
-  componentWillUnmount() {}
-
-  getData = () => {
-    fetch(this.foodTruckUrl)
+  const fetchFoodTrucks = useCallback(() => {
+    fetch(foodTruckUrl, {
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           return response.json().then((error) => Promise.reject(error));
         }
         return response.json();
       })
-      .then((responseJson) => this.setFoodTrucks(responseJson))
+      .then((responseJson) => setFoodTrucks(responseJson))
       .catch((error) => {
         console.error('Sorry, no food trucks available!');
-        this.setState({ error });
       });
-  };
+  }, []);
 
-  render() {
-    const foodTruckData = {
-      foodTrucks: this.state.foodTrucks,
-    };
-    return (
-      <div className='allListings'>
-        <FoodTruckContext.Provider value={foodTruckData}>
-          <OneListing />
-        </FoodTruckContext.Provider>
-      </div>
-    );
-  }
+  useEffect(() => {
+    fetchFoodTrucks();
+  }, [fetchFoodTrucks]);
+
+  return (
+    <div className='allListings'>
+      <FoodTruckContext.Provider value={foodTrucks}>
+        <OneListing />
+      </FoodTruckContext.Provider>
+    </div>
+  );
 }
+
+export default AllListings;
