@@ -4,3 +4,24 @@
   background-color: pink;
   z-index: 99;
 }
+
+.foodTruckInfo {
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 5px 5px 0;
+}
+
+.foodTruckName,
+.foodTruckAddress {
+  text-transform: capitalize;
+}
+
+.foodTruckAddress,
+.foodItems,
+.schedule {
+  font-size: 1.1em;
+}
+
+.schedule {
+  color: #576775;
+  font-weight: 400;
+}

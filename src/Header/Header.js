@@ -4,8 +4,9 @@ function Header() {
   return (
     <div className='header'>
       <h1 className='title'>
-        <span className='sfTitle'>SF</span>
         Food Trucks
+        <span className='of'> of </span>
+        San Francisco
       </h1>
     </div>
   );

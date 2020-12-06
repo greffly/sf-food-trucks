@@ -1,14 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Map.css';
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-} from '@react-google-maps/api';
+import { InfoWindow, GoogleMap, Marker } from '@react-google-maps/api';
 import { GoogleApiWrapper } from 'google-maps-react';
 import styles from '../GoogleMapStyles.json';
-import { render } from 'react-dom';
 import axios from 'axios';
 
 const containerStyle = {
@@ -23,13 +17,18 @@ const center = {
 
 function Map() {
   const [foodTrucks, setFoodTrucks] = useState([]);
+  const [infoWindow, setInfoWindow] = useState(null);
+
+  const onSetInfoWindow = (foodTruck) => {
+    setInfoWindow(foodTruck);
+  };
 
   useEffect(() => {
     let ignore = false;
 
     async function fetchFoodTrucks() {
       const result = await axios(
-        'https://data.sfgov.org/resource/rqzj-sfat.json?$limit=10'
+        'https://data.sfgov.org/resource/rqzj-sfat.json?$limit=100'
       );
       if (!ignore) setFoodTrucks(result.data);
     }
@@ -50,7 +49,6 @@ function Map() {
       options={{ styles: styles }}
     >
       {foodTrucks.map((foodTruck, index) => {
-        console.log(parseInt(foodTruck.latitude));
         return (
           <Marker
             key={foodTruck.permit + index}
@@ -58,9 +56,69 @@ function Map() {
               lat: parseFloat(foodTruck.latitude),
               lng: parseFloat(foodTruck.longitude),
             }}
+            onLoad={(marker) => {
+              const customIcon = (opts) =>
+                Object.assign(
+                  {
+                    path:
+                      'M172.268 501.67C26.97 291.031 0 269.413 0 192C0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67c-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80s-80 35.817-80 80s35.817 80 80 80z',
+                    fillColor: '#34495e',
+                    fillOpacity: 1,
+                    strokeColor: '#000',
+                    strokeWeight: 1,
+                    scale: 0.06,
+                  },
+                  opts
+                );
+
+              marker.setIcon(
+                customIcon({
+                  fillColor: 'black',
+                  strokeColor: 'black',
+                })
+              );
+            }}
+            onClick={() => {
+              onSetInfoWindow(foodTruck);
+            }}
           />
         );
       })}
+
+      {infoWindow && (
+        <InfoWindow
+          clickable={true}
+          onCloseClick={() => {
+            setInfoWindow(null);
+          }}
+          position={{
+            lat: parseFloat(infoWindow.latitude),
+            lng: parseFloat(infoWindow.longitude),
+          }}
+        >
+          <div className='foodTruckInfo'>
+            <h2 className='foodTruckName'>
+              {infoWindow.applicant.toLowerCase()}
+            </h2>
+            <p className='foodTruckAddress'>
+              {infoWindow.address.toLowerCase()}
+            </p>
+            <p className='foodItems'>
+              {infoWindow.fooditems
+                ? infoWindow.fooditems.replace(/:/g, ',')
+                : ''}
+            </p>
+            <a
+              href={infoWindow.schedule}
+              className='schedule'
+              target='_blank'
+              rel='noreferrer'
+            >
+              See Truck Schedule
+            </a>
+          </div>
+        </InfoWindow>
+      )}
     </GoogleMap>
   );
 }

@@ -7,6 +7,7 @@
   list-style: none;
   padding: 5px;
   text-transform: capitalize;
+  z-index: 99;
 }
 
 .listingTitle {
