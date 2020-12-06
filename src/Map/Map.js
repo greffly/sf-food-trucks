@@ -7,7 +7,8 @@ import axios from 'axios';
 
 const containerStyle = {
   width: '100%',
-  height: '100vh',
+  height: '90vh',
+  position: 'static',
 };
 
 const center = {
@@ -24,19 +25,14 @@ function Map() {
   };
 
   useEffect(() => {
-    let ignore = false;
-
-    async function fetchFoodTrucks() {
+    async function fetchFoodTruckData() {
       const result = await axios(
         'https://data.sfgov.org/resource/rqzj-sfat.json?$limit=100'
       );
-      if (!ignore) setFoodTrucks(result.data);
+      setFoodTrucks(result.data);
     }
 
-    fetchFoodTrucks();
-    return () => {
-      ignore = true;
-    };
+    return fetchFoodTruckData();
   }, []);
 
   return (
@@ -47,6 +43,7 @@ function Map() {
       center={center}
       zoom={13}
       options={{ styles: styles }}
+      class='googleMap'
     >
       {foodTrucks.map((foodTruck, index) => {
         return (
@@ -73,8 +70,8 @@ function Map() {
 
               marker.setIcon(
                 customIcon({
-                  fillColor: 'black',
-                  strokeColor: 'black',
+                  fillColor: '#576775',
+                  strokeColor: 'white',
                 })
               );
             }}
@@ -92,8 +89,8 @@ function Map() {
             setInfoWindow(null);
           }}
           position={{
-            lat: parseFloat(infoWindow.latitude),
-            lng: parseFloat(infoWindow.longitude),
+            lat: parseFloat(infoWindow.latitude) - 0.002,
+            lng: parseFloat(infoWindow.longitude) + 0.002,
           }}
         >
           <div className='foodTruckInfo'>
@@ -101,9 +98,10 @@ function Map() {
               {infoWindow.applicant.toLowerCase()}
             </h2>
             <p className='foodTruckAddress'>
-              {infoWindow.address.toLowerCase()}
+              Address: {infoWindow.address.toLowerCase()}
             </p>
             <p className='foodItems'>
+              Menu items include:{' '}
               {infoWindow.fooditems
                 ? infoWindow.fooditems.replace(/:/g, ',')
                 : ''}
