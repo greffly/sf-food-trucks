@@ -5,8 +5,8 @@ import './OneListing.css';
 class OneListing extends Component {
   static contextType = FoodTruckContext;
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       foodtrucks: [],
       error: null,
@@ -17,15 +17,16 @@ class OneListing extends Component {
     return (
       <FoodTruckContext.Consumer>
         {(context) => (
-          <div className='listing'>
+          <li className='listing' id={this.props.permit}>
             {console.log('context', context)}
+            {console.log('food truck', this.props)}
             <h1 className='listingTitle'>
-              {context ? context[0].applicant : ''}
+              {context ? 'this.props.name.toLowerCase()' : ''}
             </h1>
             <p className='listingAddress'>
-              {context ? context[0].address : ''}
+              {context ? 'this.props.address' : ''}
             </p>
-          </div>
+          </li>
         )}
       </FoodTruckContext.Consumer>
     );

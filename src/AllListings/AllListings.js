@@ -4,7 +4,8 @@ import OneListing from '../OneListing/OneListing';
 import FoodTruckContext from '../FoodTruckContext';
 
 function AllListings() {
-  const foodTruckUrl = 'https://data.sfgov.org/resource/rqzj-sfat.json';
+  const foodTruckUrl =
+    'https://data.sfgov.org/resource/rqzj-sfat.json?$limit=10';
   let [foodTrucks, setFoodTrucks] = useState('');
 
   const fetchFoodTrucks = useCallback(() => {
@@ -32,7 +33,17 @@ function AllListings() {
   return (
     <div className='allListings'>
       <FoodTruckContext.Provider value={foodTrucks}>
-        <OneListing />
+        <ul className='allFoodTrucks'>
+          {foodTrucks
+            ? foodTrucks.map((foodTruck) => (
+                <OneListing
+                  key={foodTruck.permit}
+                  name={foodTruck.applicant}
+                  address={foodTruck.address}
+                />
+              ))
+            : ''}
+        </ul>
       </FoodTruckContext.Provider>
     </div>
   );

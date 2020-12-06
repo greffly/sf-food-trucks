@@ -3,8 +3,12 @@
   width: 250px;
   background-color: white;
   border: 2px solid black;
-  margin-top: 100px;
-  z-index: 99;
-  position: fixed;
+  margin-top: 10px;
+  list-style: none;
   padding: 5px;
+  text-transform: capitalize;
+}
+
+.listingTitle {
+  font-size: 30px;
 }

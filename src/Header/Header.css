@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   height: 100px;
-  background-color: white;
+  background-color: #576775;
   display: flex;
   position: fixed;
   z-index: 1;
@@ -10,6 +10,7 @@
 .title {
   margin: auto;
   align-self: center;
+  color: white;
 }
 
 .sfTitle {
