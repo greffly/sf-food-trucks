@@ -16,8 +16,6 @@ const center = {
   lng: -122.441297,
 };
 
-const api_key = process.env.REACT_APP_API_KEY;
-
 function Map() {
   const [foodTrucks, setFoodTrucks] = useState([]);
   const [infoWindow, setInfoWindow] = useState(null);
@@ -39,7 +37,7 @@ function Map() {
 
   return (
     <GoogleMap
-      googleMapUrl='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${api_key}'
+      googleMapUrl='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key='
       mapContainerStyle={containerStyle}
       center={center}
       zoom={13}
@@ -120,5 +118,5 @@ function Map() {
 }
 
 export default GoogleApiWrapper({
-  apiKey: '{api_key}',
+  apiKey: 'AIzaSyD5-3ZGgtuwr7k9FbfW34NkgqZSdONWgEU',
 })(Map);
