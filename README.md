@@ -2,6 +2,8 @@
 ![image of food trucks in San Francisco, image credit Thrillist](Images/sffoodtrucks.jpeg)
 There are hundreds of food trucks in San Francisco, and this handy one-page map app helps you look through them all. Just click on a marker on the map to see the name of the food truck, the address, what kinds of items you can expect to find on the menu, and their operating hours. While most maps give you the standard google color scheme, this one adds some beauty to your food truck finding experience with a custom color scheme.
 
+The live site can be found here: [Food Trucks of San Francisco](https://quizzical-spence-9f3205.netlify.app/)
+
 ## Architecture
 This is a React based app that utilizes two external APIs - [Mobile Food Facility Permits](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat) from DataSF and [Google Maps API](https://cloud.google.com/maps-platform/). For the custom styling, I was able to build the design of the map via [Snazzy Maps](https://snazzymaps.com/) and incorporate the json file into my app. With frontend being my passion and what I enjoy most, that's where I decided to put most of my energy.
 
