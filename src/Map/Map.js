@@ -16,6 +16,8 @@ const center = {
   lng: -122.441297,
 };
 
+const api_key = process.env.REACT_APP_API_KEY;
+
 function Map() {
   const [foodTrucks, setFoodTrucks] = useState([]);
   const [infoWindow, setInfoWindow] = useState(null);
@@ -27,7 +29,7 @@ function Map() {
   useEffect(() => {
     async function fetchFoodTruckData() {
       const result = await axios(
-        'https://data.sfgov.org/resource/rqzj-sfat.json?$limit=100'
+        'https://data.sfgov.org/resource/rqzj-sfat.json?'
       );
       setFoodTrucks(result.data);
     }
@@ -37,8 +39,7 @@ function Map() {
 
   return (
     <GoogleMap
-      googleMapUrl='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD5-3ZGgtuwr7k9FbfW34NkgqZSdONWgEU'
-      apiKey='AIzaSyD5-3ZGgtuwr7k9FbfW34NkgqZSdONWgEU'
+      googleMapUrl='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${api_key}'
       mapContainerStyle={containerStyle}
       center={center}
       zoom={13}
@@ -101,10 +102,13 @@ function Map() {
               Address: {infoWindow.address.toLowerCase()}
             </p>
             <p className='foodItems'>
-              Menu items include:{' '}
               {infoWindow.fooditems
-                ? infoWindow.fooditems.replace(/:/g, ',')
+                ? 'Menu items include: ' +
+                  infoWindow.fooditems.replace(/:/g, ',')
                 : ''}
+            </p>
+            <p className='foodTruckHours'>
+              {infoWindow.dayshours ? 'Hours: ' + infoWindow.dayshours : ''}
             </p>
             <a
               href={infoWindow.schedule}

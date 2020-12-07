@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Header from './Header/Header';
-import Map from './Map/Map';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Map />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
