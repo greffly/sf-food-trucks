@@ -98,6 +98,8 @@ function Map() {
             <h2 className='foodTruckName'>
               {infoWindow.applicant.toLowerCase()}
             </h2>
+            <hr style={{ width: '80%' }} color={'#bf5d54'} />
+            <hr style={{ width: '70%' }} color={'#bf5d54'} />
             <p className='foodTruckAddress'>
               Address: {infoWindow.address.toLowerCase()}
             </p>

@@ -8,6 +8,17 @@
 .foodTruckInfo {
   font-family: 'Montserrat', sans-serif;
   padding: 0 5px 5px 0;
+  max-width: 300px;
+}
+
+.foodTruckName {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.icon {
+  height: 20px;
+  width: 20px;
 }
 
 .foodTruckName,
