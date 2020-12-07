@@ -112,14 +112,6 @@ function Map() {
             <p className='foodTruckHours'>
               {infoWindow.dayshours ? 'Hours: ' + infoWindow.dayshours : ''}
             </p>
-            <a
-              href={infoWindow.schedule}
-              className='schedule'
-              target='_blank'
-              rel='noreferrer'
-            >
-              See Truck Schedule
-            </a>
           </div>
         </InfoWindow>
       )}
@@ -128,5 +120,5 @@ function Map() {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyD5-3ZGgtuwr7k9FbfW34NkgqZSdONWgEU',
+  apiKey: '{api_key}',
 })(Map);
