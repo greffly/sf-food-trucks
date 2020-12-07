@@ -15,7 +15,7 @@ In the future, a search bar could be added at the bottom of the map that could h
 Currently the app is only designed with desktop and tablet in mind, but for the app to be useful to more users, I would make it mobile friendly. I would also add a geolocator so the user could see where they are in relation to food trucks.
 
 ## Resources
-[Food Trucks of San Francisco hosted on Netlify](https://quizzical-spence-9f3205.netlify.app/)
-[My portfolio site](https://caitlyngreffly.com/)
-[My resume](https://caitlyngreffly.com/CaitlynGrefflyResume.pdf)
-[A lightning talk I recently did on AWS](https://youtu.be/Xul4dWFMZm0?t=1417)
+[Food Trucks of San Francisco hosted on Netlify](https://quizzical-spence-9f3205.netlify.app/)  
+[My portfolio site](https://caitlyngreffly.com/)  
+[My resume](https://caitlyngreffly.com/CaitlynGrefflyResume.pdf)  
+[A lightning talk I recently did on AWS](https://youtu.be/Xul4dWFMZm0?t=1417)  
