@@ -5,6 +5,8 @@ import { GoogleApiWrapper } from 'google-maps-react';
 import styles from '../GoogleMapStyles.json';
 import axios from 'axios';
 
+const api_key = process.env.REACT_APP_MAP_API_KEY;
+
 const containerStyle = {
   width: '100%',
   height: '90vh',
@@ -116,7 +118,6 @@ function Map() {
     </GoogleMap>
   );
 }
-
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyD5-3ZGgtuwr7k9FbfW34NkgqZSdONWgEU',
+  apiKey: api_key,
 })(Map);
