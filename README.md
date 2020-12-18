@@ -26,5 +26,5 @@ Upon completing the app, I ran a Google Lighthouse test and found that the perfo
 
 ## Resources
 [Food Trucks of San Francisco hosted on Netlify](https://quizzical-spence-9f3205.netlify.app/)  
-[My portfolio site](https://caitlyngreffly.com/)
+[My portfolio site](https://caitlyngreffly.com/)  
 [A lightning talk I recently did on AWS](https://youtu.be/Xul4dWFMZm0?t=1417)  
