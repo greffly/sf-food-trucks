@@ -37,3 +37,56 @@
   color: #576775;
   font-weight: 400;
 }
+
+.paginate {
+  z-index: 99;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: row;
+}
+
+.leftArrow,
+.rightArrow {
+  height: 45px;
+  width: 65px;
+  background-color: #bf5d54;
+  border: 2px solid white;
+  cursor: pointer;
+  margin: 0 6px;
+  outline: none;
+}
+
+.arrowRightIcon,
+.arrowLeftIcon {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+  outline: none;
+}
+
+.arrowRightIcon {
+  transform: rotate(135deg);
+  margin: auto 0 auto 27px;
+}
+
+.arrowLeftIcon {
+  transform: rotate(-45deg);
+  margin: auto 0 auto 5px;
+}
+
+.arrowRightIcon::after,
+.arrowLeftIcon::after {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 45px;
+  background-color: white;
+  transform: rotate(-45deg) translate(15px, 4px);
+  left: 0;
+  top: 0;
+}

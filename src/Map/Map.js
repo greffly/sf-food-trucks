@@ -16,6 +16,8 @@ const center = {
   lng: -122.441297,
 };
 
+let page = 0;
+
 function Map() {
   const [foodTrucks, setFoodTrucks] = useState([]);
   const [infoWindow, setInfoWindow] = useState(null);
@@ -24,15 +26,20 @@ function Map() {
     setInfoWindow(foodTruck);
   };
 
-  useEffect(() => {
+  const handleFetch = (page) => {
+    const url = `https://data.sfgov.org/resource/rqzj-sfat.json?$limit=50&$offset=${
+      (page + 1) * 50
+    }`;
     async function fetchFoodTruckData() {
-      const result = await axios(
-        'https://data.sfgov.org/resource/rqzj-sfat.json?'
-      );
+      const result = await axios(url);
       setFoodTrucks(result.data);
     }
 
     return fetchFoodTruckData();
+  };
+
+  useEffect(() => {
+    handleFetch(page);
   }, []);
 
   return (
@@ -113,6 +120,26 @@ function Map() {
           </div>
         </InfoWindow>
       )}
+      <div className='paginate'>
+        <button
+          className='leftArrow'
+          onClick={() => {
+            page > 0 ? handleFetch(--page) : handleFetch(page);
+            setInfoWindow(null);
+          }}
+        >
+          <p className='arrowLeftIcon'></p>
+        </button>
+        <button
+          className='rightArrow'
+          onClick={() => {
+            page < 13 ? handleFetch(++page) : handleFetch(page);
+            setInfoWindow(null);
+          }}
+        >
+          <p className='arrowRightIcon'></p>
+        </button>
+      </div>
     </GoogleMap>
   );
 }
