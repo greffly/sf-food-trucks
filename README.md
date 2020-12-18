@@ -20,12 +20,11 @@ Currently the app is only designed with desktop and tablet in mind, but for the 
 **Testing**
 I installed Jest for testing as it's the most similar to what I have been working in - Jasmine. However there were some build issues with the install that time constraints kept me from resolving. Future plans to turn psuedo-code tests into real tests.
 
-**Increase Performance**
-Upon completing the app, I ran a Google Lighthouse test and found that the performance score was lower than I would like it to be. I believe this is do to the slow load of the markers, and the vast number of markers on the map. One way I could try to fix this is to sort of paginate the map, where only the first 50 trucks are visible, and you can page through to see the next 50 and so on.
-![Screengrab of Lighthouse performance test. Performance rating: 63, Accessibility rating: 93, Best Practices: 93, SEO: 91](Images/lighthouse.png)
+**Increase Performance - DONE**
+Upon completing the app, I ran a Google Lighthouse test and found that the performance score was lower than I would like it to be. I believed this was due to the slow load of the markers, and the vast number of markers on the map. I decided to fix this by paginating the map, now only the first 50 trucks are visible, and you can page through to see the next 50 and so on. This increased the performance rating from 63 to 95.
+![Screengrab of Lighthouse performance test. Performance rating: 95, Accessibility rating: 93, Best Practices: 93, SEO: 91](Images/lighthouse.png)
 
 ## Resources
 [Food Trucks of San Francisco hosted on Netlify](https://quizzical-spence-9f3205.netlify.app/)  
-[My portfolio site](https://caitlyngreffly.com/)  
-[My resume](https://caitlyngreffly.com/CaitlynGrefflyResume.pdf)  
+[My portfolio site](https://caitlyngreffly.com/)
 [A lightning talk I recently did on AWS](https://youtu.be/Xul4dWFMZm0?t=1417)  
