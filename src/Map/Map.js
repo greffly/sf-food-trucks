@@ -123,6 +123,7 @@ function Map() {
       <div className='paginate'>
         <button
           className='leftArrow'
+          aria-label='page left'
           onClick={() => {
             page > 0 ? handleFetch(--page) : handleFetch(page);
             setInfoWindow(null);
@@ -132,6 +133,7 @@ function Map() {
         </button>
         <button
           className='rightArrow'
+          aria-label='page right'
           onClick={() => {
             page < 13 ? handleFetch(++page) : handleFetch(page);
             setInfoWindow(null);
