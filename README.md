@@ -23,8 +23,3 @@ I installed Jest for testing as it's the most similar to what I have been workin
 **Increase Performance - DONE**
 Upon completing the app, I ran a Google Lighthouse test and found that the performance score was lower than I would like it to be. I believed this was due to the slow load of the markers, and the vast number of markers on the map. I decided to fix this by paginating the map, now only the first 50 trucks are visible, and you can page through to see the next 50 and so on. This increased the performance rating from 63 to 95.
 ![Screengrab of Lighthouse performance test. Performance rating: 95, Accessibility rating: 93, Best Practices: 93, SEO: 91](Images/lighthouse.png)
-
-## Resources
-[Food Trucks of San Francisco hosted on Netlify](https://quizzical-spence-9f3205.netlify.app/)  
-[My portfolio site](https://caitlyngreffly.com/)  
-[A lightning talk I recently did on AWS](https://youtu.be/Xul4dWFMZm0?t=1417)  
